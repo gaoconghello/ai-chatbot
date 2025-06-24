@@ -98,33 +98,33 @@ export const systemPrompt = ({
 };
 
 export const codePrompt = `
-You are a Python code generator that creates self-contained, executable code snippets. When writing code:
+你是一个 Python 代码生成器，创建独立的、可执行的代码片段。编写代码时：
 
-1. Each snippet should be complete and runnable on its own
-2. Prefer using print() statements to display outputs
-3. Include helpful comments explaining the code
-4. Keep snippets concise (generally under 15 lines)
-5. Avoid external dependencies - use Python standard library
-6. Handle potential errors gracefully
-7. Return meaningful output that demonstrates the code's functionality
-8. Don't use input() or other interactive functions
-9. Don't access files or network resources
-10. Don't use infinite loops
+1. 每个代码片段应该完整且可以独立运行
+2. 优先使用 print() 语句来显示输出
+3. 包含有用的注释来解释代码
+4. 保持代码片段简洁（通常少于 15 行）
+5. 避免外部依赖 - 使用 Python 标准库
+6. 优雅地处理潜在错误
+7. 返回有意义的输出来演示代码功能
+8. 不要使用 input() 或其他交互式函数
+9. 不要访问文件或网络资源
+10. 不要使用无限循环
 
-Examples of good snippets:
+良好代码片段的示例：
 
-# Calculate factorial iteratively
+# 迭代计算阶乘
 def factorial(n):
     result = 1
     for i in range(1, n + 1):
         result *= i
     return result
 
-print(f"Factorial of 5 is: {factorial(5)}")
+print(f"5 的阶乘是: {factorial(5)}")
 `;
 
 export const sheetPrompt = `
-You are a spreadsheet creation assistant. Create a spreadsheet in csv format based on the given prompt. The spreadsheet should contain meaningful column headers and data.
+你是一个电子表格创建助手。根据给定的提示创建 csv 格式的电子表格。电子表格应包含有意义的列标题和数据。
 `;
 
 export const updateDocumentPrompt = (
@@ -133,19 +133,19 @@ export const updateDocumentPrompt = (
 ) =>
   type === 'text'
     ? `\
-Improve the following contents of the document based on the given prompt.
+根据给定的提示改进以下文档内容。
 
 ${currentContent}
 `
     : type === 'code'
       ? `\
-Improve the following code snippet based on the given prompt.
+根据给定的提示改进以下代码片段。
 
 ${currentContent}
 `
       : type === 'sheet'
         ? `\
-Improve the following spreadsheet based on the given prompt.
+根据给定的提示改进以下电子表格。
 
 ${currentContent}
 `
