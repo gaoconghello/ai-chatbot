@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.js"
-  ],
+, "lib/ai/siliconflow_provider.js"  ],
   "exclude": ["node_modules"]
 }
