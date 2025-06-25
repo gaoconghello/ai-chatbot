@@ -132,7 +132,8 @@ function PureMultimodalInput({
     chatId,
   ]);
 
-  const uploadFile = async (file: File) => {
+  // 文件上传功能已注释
+  /* const uploadFile = async (file: File) => {
     const formData = new FormData();
     formData.append('file', file);
 
@@ -157,9 +158,10 @@ function PureMultimodalInput({
     } catch (error) {
       toast.error('Failed to upload file, please try again!');
     }
-  };
+  }; */
 
-  const handleFileChange = useCallback(
+  // 文件变更处理函数已注释
+  /* const handleFileChange = useCallback(
     async (event: ChangeEvent<HTMLInputElement>) => {
       const files = Array.from(event.target.files || []);
 
@@ -183,7 +185,7 @@ function PureMultimodalInput({
       }
     },
     [setAttachments],
-  );
+  ); */
 
   const { isAtBottom, scrollToBottom } = useScrollToBottom();
 
@@ -230,16 +232,18 @@ function PureMultimodalInput({
           />
         )}
 
-      <input
+      {/* 附件功能已注释 */}
+      {/* <input
         type="file"
         className="fixed -top-4 -left-4 size-0.5 opacity-0 pointer-events-none"
         ref={fileInputRef}
         multiple
         onChange={handleFileChange}
         tabIndex={-1}
-      />
+      /> */}
 
-      {(attachments.length > 0 || uploadQueue.length > 0) && (
+      {/* 附件预览功能已注释 */}
+      {/* {(attachments.length > 0 || uploadQueue.length > 0) && (
         <div
           data-testid="attachments-preview"
           className="flex flex-row gap-2 overflow-x-scroll items-end"
@@ -260,7 +264,7 @@ function PureMultimodalInput({
             />
           ))}
         </div>
-      )}
+      )} */}
 
       <Textarea
         data-testid="multimodal-input"
@@ -291,9 +295,10 @@ function PureMultimodalInput({
         }}
       />
 
-      <div className="absolute bottom-0 p-2 w-fit flex flex-row justify-start">
+      {/* 附件按钮已注释 */}
+      {/* <div className="absolute bottom-0 p-2 w-fit flex flex-row justify-start">
         <AttachmentsButton fileInputRef={fileInputRef} status={status} />
-      </div>
+      </div> */}
 
       <div className="absolute bottom-0 right-0 p-2 w-fit flex flex-row justify-end">
         {status === 'submitted' ? (
