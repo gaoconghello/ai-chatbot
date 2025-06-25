@@ -13,7 +13,7 @@ export const Greeting = () => {
         transition={{ delay: 0.5 }}
         className="text-2xl font-semibold"
       >
-        Hello there!
+        你好，孩子！
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 10 }}
@@ -22,7 +22,7 @@ export const Greeting = () => {
         transition={{ delay: 0.6 }}
         className="text-2xl text-zinc-500"
       >
-        How can I help you today?
+        祝你有美好的一天，有什么想聊一聊的吗？
       </motion.div>
     </div>
   );
