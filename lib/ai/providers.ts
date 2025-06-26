@@ -33,13 +33,13 @@ export const myProvider = isTestEnvironment
     })
   : customProvider({
       languageModels: {
-        'chat-model': siliconflow('deepseek-ai/DeepSeek-R1-0528-Qwen3-8B'), // 支持视觉和工具调用的主要聊天模型
+        'chat-model': openrouter('deepseek/deepseek-r1-0528-qwen3-8b:free'), // 支持视觉和工具调用的主要聊天模型
         'chat-model-reasoning': wrapLanguageModel({
-          model: siliconflow('deepseek-ai/DeepSeek-R1-0528-Qwen3-8B'), // 推理模型，适合复杂思考任务
+          model: openrouter('deepseek/deepseek-r1-0528-qwen3-8b:free'), // 推理模型，适合复杂思考任务
           middleware: extractReasoningMiddleware({ tagName: 'thinking' }),
         }),
-        'title-model': siliconflow('deepseek-ai/DeepSeek-R1-0528-Qwen3-8B'), // 轻量级模型，适合生成标题
-        'artifact-model': siliconflow('deepseek-ai/DeepSeek-R1-0528-Qwen3-8B'), // 代码和结构化输出生成
+        'title-model': openrouter('deepseek/deepseek-r1-0528-qwen3-8b:free'), // 轻量级模型，适合生成标题
+        'artifact-model': openrouter('deepseek/deepseek-r1-0528-qwen3-8b:free'), // 代码和结构化输出生成
       },
       imageModels: {
         'small-model': openai.image('dall-e-3'), // 保留 OpenAI 图像生成模型
