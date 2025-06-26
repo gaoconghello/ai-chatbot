@@ -4,7 +4,7 @@ import {
   wrapLanguageModel,
 } from 'ai';
 import { openai } from '@ai-sdk/openai';
-import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+import { createOpenRouter } from './openrouter_provider';
 import { createSiliconFlow } from './siliconflow_provider';
 import { isTestEnvironment } from '../constants';
 import {
