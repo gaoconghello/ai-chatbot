@@ -219,14 +219,8 @@ export async function POST(request: Request) {
           sendReasoning: true,
         });
       },
-      onError: (error: unknown) => {
-        console.error('Stream error details:', {
-          message: error.message,
-          stack: error.stack,
-          name: error.name,
-          cause: error.cause,
-        });
-        return `Error: ${error.message || 'Unknown error occurred'} (${error.name || 'UnknownError'})`;
+      onError: () => {
+        return 'Oops, an error occurred!';
       },
     });
 
