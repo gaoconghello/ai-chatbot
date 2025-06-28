@@ -1,4 +1,5 @@
 import { env } from 'node:process';
+import { ProxyAgent } from 'undici';
 
 export async function speechToText(
   audioBlob: Blob,
@@ -17,6 +18,7 @@ export async function speechToText(
     formData.append('language', language);
   }
 
+  const proxy = env.PROXY_URL;
 
   const response = await fetch(
     'https://api.openai.com/v1/audio/transcriptions',
@@ -26,6 +28,8 @@ export async function speechToText(
         Authorization: `Bearer ${apiKey}`,
       },
       body: formData,
+      // @ts-expect-error - The `dispatcher` property is not in the default `fetch` type, but it's used by undici.
+      dispatcher: proxy ? new ProxyAgent(proxy) : undefined,
     },
   );
 
