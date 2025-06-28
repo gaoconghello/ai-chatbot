@@ -58,6 +58,7 @@ function PureMultimodalInput({
   const [isRecording, setIsRecording] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
+  const justTranscribed = useRef(false);
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -121,6 +122,13 @@ function PureMultimodalInput({
   const { isAtBottom, scrollToBottom } = useScrollToBottom();
 
   useEffect(() => {
+    if (justTranscribed.current && input?.trim()) {
+      submitForm();
+      justTranscribed.current = false;
+    }
+  }, [input, submitForm]);
+
+  useEffect(() => {
     if (status === 'submitted') {
       scrollToBottom();
     }
@@ -144,6 +152,7 @@ function PureMultimodalInput({
         };
 
         mediaRecorder.onstop = async () => {
+          stream.getTracks().forEach((track) => track.stop());
           const audioBlob = new Blob(audioChunksRef.current, {
             type: 'audio/webm',
           });
@@ -162,7 +171,13 @@ function PureMultimodalInput({
               if (response.ok) {
                 const data = await response.json();
                 console.log('Transcription:', data.text);
-                toast.success('语音已转换为文本');
+                if (data.text?.trim()) {
+                  setInput(data.text);
+                  justTranscribed.current = true;
+                  toast.success('语音已转换为文本并提交');
+                } else {
+                  toast.success('语音已转换为文本');
+                }
               } else {
                 toast.error('语音转换失败');
               }
