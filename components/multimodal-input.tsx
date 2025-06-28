@@ -1,6 +1,6 @@
 'use client';
 
-import type { Attachment, UIMessage } from 'ai';
+import type { UIMessage } from 'ai';
 import cx from 'classnames';
 import type React from 'react';
 import {
@@ -16,8 +16,11 @@ import {
 import { toast } from 'sonner';
 import { useLocalStorage, useWindowSize } from 'usehooks-ts';
 
-import { ArrowUpIcon, MicrophoneIcon, PaperclipIcon, StopIcon } from './icons';
-import { PreviewAttachment } from './preview-attachment';
+import {
+  ArrowUpIcon,
+  MicrophoneIcon,
+  StopIcon,
+} from './icons';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
 import { SuggestedActions } from './suggested-actions';

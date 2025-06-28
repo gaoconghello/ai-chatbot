@@ -105,7 +105,6 @@ export function Chat({
     fetcher,
   );
 
-  const [attachments, setAttachments] = useState<Array<Attachment>>([]);
   const isArtifactVisible = useArtifactSelector((state) => state.isVisible);
 
   useAutoResume({
@@ -147,8 +146,6 @@ export function Chat({
               handleSubmit={handleSubmit}
               status={status}
               stop={stop}
-              attachments={attachments}
-              setAttachments={setAttachments}
               messages={messages}
               setMessages={setMessages}
               append={append}
@@ -165,8 +162,6 @@ export function Chat({
         handleSubmit={handleSubmit}
         status={status}
         stop={stop}
-        attachments={attachments}
-        setAttachments={setAttachments}
         append={append}
         messages={messages}
         setMessages={setMessages}

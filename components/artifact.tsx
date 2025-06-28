@@ -59,8 +59,6 @@ function PureArtifact({
   handleSubmit,
   status,
   stop,
-  attachments,
-  setAttachments,
   append,
   messages,
   setMessages,
@@ -74,8 +72,6 @@ function PureArtifact({
   setInput: UseChatHelpers['setInput'];
   status: UseChatHelpers['status'];
   stop: UseChatHelpers['stop'];
-  attachments: Array<Attachment>;
-  setAttachments: Dispatch<SetStateAction<Array<Attachment>>>;
   messages: Array<UIMessage>;
   setMessages: UseChatHelpers['setMessages'];
   votes: Array<Vote> | undefined;
@@ -332,8 +328,6 @@ function PureArtifact({
                     handleSubmit={handleSubmit}
                     status={status}
                     stop={stop}
-                    attachments={attachments}
-                    setAttachments={setAttachments}
                     messages={messages}
                     append={append}
                     className="bg-background dark:bg-muted"
@@ -506,9 +500,13 @@ export const Artifact = memo(PureArtifact, (prevProps, nextProps) => {
   if (prevProps.status !== nextProps.status) return false;
   if (!equal(prevProps.votes, nextProps.votes)) return false;
   if (prevProps.input !== nextProps.input) return false;
-  if (!equal(prevProps.messages, nextProps.messages.length)) return false;
-  if (prevProps.selectedVisibilityType !== nextProps.selectedVisibilityType)
+  if (!equal(prevProps.messages, nextProps.messages)) return false;
+  if (prevProps.isReadonly !== nextProps.isReadonly) return false;
+  if (
+    prevProps.selectedVisibilityType !== nextProps.selectedVisibilityType
+  ) {
     return false;
+  }
 
   return true;
 });
